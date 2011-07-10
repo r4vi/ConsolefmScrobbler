@@ -8,22 +8,20 @@ var session_token;
 var api_key = "62be1c8445c92c28e5b36f548c069f69";
 var api_secret = "371780d53d282c42b3e50229df3df313";
 
-console.log('TurntableScrobbler loaded.');
+console.log('ConsolefmScrobbler loaded.');
 
 check_for_authentication();
 
 function checkForChange() {
 	//Uses the " started playing "Ayo For Yayo" by Andre Nickatina" string
 	
-	chat_messages = document.getElementsByClassName("message");
+	chat_message = document.querySelector('li.playing a').text
 	
 	//Make sure there's crap in the chat box first
-	if (chat_messages.length > 0) {
-		chat_message = chat_messages[chat_messages.length -1].childNodes[1].innerHTML;
 		
 		//console.log("Existing is: "+existing_track_message + " New is: "+chat_message);
 		
-		if (chat_message != existing_track_message && chat_message.indexOf("started playing") == 1) {
+		if (chat_message != existing_track_message) {
 			existing_track_message = chat_message;
 			
 			//Figure out the artist and track
