@@ -41,7 +41,7 @@ function checkForChange() {
 			
 		}
 	}
-}	
+	
 
 function get_authenticated() {
 	var method = 'POST';
