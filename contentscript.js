@@ -5,8 +5,8 @@ var existing_track_message;
 var lastfm_token;
 var session_token;
 
-var api_key = "62be1c8445c92c28e5b36f548c069f69";
-var api_secret = "371780d53d282c42b3e50229df3df313";
+var api_key = "67016c58ec7a4183202d00c9f03e38e3";
+var api_secret = "3820b02fc1e7d42f61ccb30e7436e945";
 
 console.log('ConsolefmScrobbler loaded.');
 
