@@ -15,7 +15,7 @@ check_for_authentication();
 function checkForChange() {
 	//Uses the " started playing "Ayo For Yayo" by Andre Nickatina" string
 	
-	chat_message = document.querySelector('li.playing a').text
+	chat_message = document.querySelector('li.sm2_playing a').text
 	
 	//Make sure there's crap in the chat box first
 		
