@@ -4,6 +4,7 @@ var chat_message;
 var existing_track_message;
 var lastfm_token;
 var session_token;
+var VERSION_NO = 0.3
 
 var api_key = "67016c58ec7a4183202d00c9f03e38e3";
 var api_secret = "3820b02fc1e7d42f61ccb30e7436e945";
@@ -15,20 +16,19 @@ check_for_authentication();
 function checkForChange() {
 	//Uses the " started playing "Ayo For Yayo" by Andre Nickatina" string
 	
-	chat_message = document.querySelector('li.sm2_playing a').text
+	track_title = document.querySelector('div#now_playing > div > h2 > span#track-title').innerText + ' - ' + document.querySelector('div#now_playing > div#track-info > h3').innerText
 	
 	//Make sure there's crap in the chat box first
 		
 		//console.log("Existing is: "+existing_track_message + " New is: "+chat_message);
 		
-		if (chat_message != existing_track_message) {
-			existing_track_message = chat_message;
+		if (track_title != existing_track_message) {
+			existing_track_message = track_title;
 			
 			//Figure out the artist and track
-			track_string_begins = chat_message.indexOf('"');
-			track_string_ends = chat_message.indexOf('"',track_string_begins + 1);
-			track_string = chat_message.substr(track_string_begins+1,track_string_ends - track_string_begins-1);
-			artist_string = chat_message.substr(track_string_ends+5);
+			track_string = document.querySelector('div#now_playing > div > h2 > span#track-title').innerText;
+			artist_string = document.querySelector('div#now_playing > div#track-info > h3').innerText;
+;
 
 			//Figure out the track length
 			//length_raw_string = document.getElementById('songboard_title').innerHTML;
@@ -59,6 +59,17 @@ function check_for_authentication() {
 	});
 	
 	//console.log(token);
+    
+    if (!localStorage["consolefmscrobbler-version"])
+    {
+        localStorage["consolefmscrobbler-version"] = VERSION_NO
+    } else {
+        if (VERSION_NO !=  localStorage["consolefmscrobbler-version"])
+        {
+            window.localStorage.removeItem("lastfm-session-token");
+            window.localStorage.removeItem("lastfm_token");
+        }
+    }
 	
 	if (!localStorage["lastfm-session-token"]) {
 		window.localStorage.removeItem("lastfm-session-token");
